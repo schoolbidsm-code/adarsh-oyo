@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adarsh OYO - Private Rooms & Stay</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="authView" class="view active">
+  <div class="auth-wrap">
+    <div class="brand-row">
+      <div class="logo-mark">A</div>
+      <div class="brand-name">ADARSH <span>OYO</span></div>
+    </div>
+    <p class="brand-sub">Private Rooms & Stay · 18+ Couples</p>
+    <div class="auth-card pop-in">
+      <div class="auth-tabs">
+        <button class="tab active" id="tabLogin" type="button">Login</button>
+        <button class="tab" id="tabReg" type="button">New User Registration</button>
+      </div>
+      <form id="loginForm">
+        <label>Gmail ya Mobile Number</label>
+        <input id="loginId" type="text" placeholder="gmail ya 10 digit mobile">
+        <label>Password</label>
+        <input id="loginPass" type="password" placeholder="aapka password">
+        <button class="btn btn-primary" type="submit">Login</button>
+        <p class="form-msg" id="loginErr"></p>
+      </form>
+      <form id="regForm" hidden>
+        <label>Pura Naam</label>
+        <input id="regName" type="text" placeholder="aapka naam">
+        <label>Mobile Number</label>
+        <input id="regMobile" type="tel" maxlength="10" inputmode="numeric" placeholder="10 digit mobile">
+        <label>Gmail (Email)</label>
+        <input id="regEmail" type="email" placeholder="aapka gmail">
+        <label>Create New Password</label>
+        <input id="regPass" type="password" placeholder="naya password (6+ akshar)">
+        <label>Confirm Password</label>
+        <input id="regPass2" type="password" placeholder="dobara wahi password likhiye">
+        <div class="captcha">
+          <p class="captcha-title">Sign up se pehle chhota puzzle solve kijiye</p>
+          <div class="captcha-seq" id="captchaSeq"></div>
+          <div class="captcha-opts" id="captchaOpts"></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+        <p class="form-msg" id="regErr"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="homeView" class="view">
+  <header class="topbar">
+    <div class="brand-row small">
+      <div class="logo-mark">A</div>
+      <div class="brand-name">ADARSH <span>OYO</span></div>
+    </div>
+    <nav class="topnav">
+      <a href="#rooms">Rooms</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#rates">Rates</a>
+      <a href="#trading">Trading</a>
+      <button class="btn btn-ghost" id="myBookingsBtn" type="button">My Bookings</button>
+      <button class="btn btn-ghost" id="logoutBtn" type="button">Logout</button>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1 id="heroTitle" data-text="Adarsh OYO me aapka swagat hai"></h1>
+    <p class="hero-sub">Private couple rooms · 18+ · poori privacy · menu-style rent</p>
+    <a class="btn btn-primary" href="#rooms">Room Book Karo</a>
+  </section>
+  <section id="rooms" class="section">
+    <h2>Rooms</h2>
+    <p class="section-sub">Room pe click kijiye, booking form khul jayega.</p>
+    <div class="rooms-grid" id="roomsGrid"></div>
+  </section>
+  <section id="facilities" class="section">
+    <h2>Facilities</h2>
+    <div class="fac-grid" id="facGrid"></div>
+  </section>
+  <section id="rates" class="section">
+    <h2>Rent Card (Menu Style)</h2>
+    <div class="table-wrap"><table id="ratesTable"></table></div>
+  </section>
+  <section id="mybookings" class="section" hidden>
+    <h2>My Bookings</h2>
+    <div id="bookingsList"></div>
+  </section>
+  <section id="trading" class="section">
+    <h2>Padhai + Trading Seekhna</h2>
+    <ul class="trading-list">
+      <li>Trading kya hota hai: share market, candle, chart ki basic baat</li>
+      <li>Risk kaise control karein: kab kitna lagana chahiye</li>
+      <li>Paper trading practice: bina paise lagaye pehle seekho</li>
+      <li>Naye log ki common ghaltiyan aur unse bachna</li>
+    </ul>
+    <p class="disc">Sach baat: trading me loss ka chance hamesha rehta hai. Koi fixed mahine ka profit nahi hota. Pehle seekho, phir utna hi lagao jitna khone ki aukat ho.</p>
+  </section>
+  <section class="section">
+    <h2>18+ Policy</h2>
+    <p>Sirf 18+ couples ke liye. Check-in par dono partners ki valid photo ID (Aadhaar, DL ya passport) zaroori hai. Poori privacy, discreet entry aur suraksha ka pura dhyan. Anuchit activity par booking turant cancel.</p>
+  </section>
+  <footer class="foot">Adarsh OYO · Private Rooms & Stay</footer>
+</div>
+
+<div id="bookModal" class="modal" hidden>
+  <div class="modal-card pop-in">
+    <button class="modal-x" id="modalX" type="button">×</button>
+    <div id="bookFormWrap">
+      <h3 id="bookRoomTitle"></h3>
+      <form id="bookForm">
+        <label>Pura Naam</label>
+        <input id="bkName">
+        <label>Mobile Number</label>
+        <input id="bkMobile" maxlength="10" inputmode="numeric">
+        <label>Gmail (Email)</label>
+        <input id="bkEmail" type="email">
+        <label>PAN Number</label>
+        <input id="bkPan" placeholder="ABCDE1234F">
+        <label>Aadhaar Number</label>
+        <input id="bkAadhaar" maxlength="12" inputmode="numeric" placeholder="12 digit">
+        <label>Pura Address</label>
+        <textarea id="bkAddress" rows="2"></textarea>
+        <label>Date (kis din aana hai)</label>
+        <input id="bkDate" type="date">
+        <label>Time</label>
+        <select id="bkTime">
+          <option>Morning 9-12</option>
+          <option>Day 12-3</option>
+          <option>Evening 3-6</option>
+          <option>Night 6-9</option>
+          <option>Full Night 9 PM - 9 AM</option>
+        </select>
+        <label>Kitne ghante</label>
+        <select id="bkDur">
+          <option value="3">3 ghante</option>
+          <option value="6">6 ghante</option>
+          <option value="n">Puri raat</option>
+        </select>
+        <p class="total-line">Total: <strong id="bkTotal"></strong></p>
+        <button class="btn btn-primary" type="submit">Booking Confirm Karo</button>
+      </form>
+    </div>
+    <div id="bookDone" hidden>
+      <div class="done-tick">✓</div>
+      <h3>Booking Ho Gayi!</h3>
+      <p id="doneText"></p>
+      <button class="btn btn-primary" id="doneOk" type="button">Theek Hai</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
