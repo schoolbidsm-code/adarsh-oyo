@@ -95,3 +95,5 @@ tr:last-child td{border-bottom:0}
 .booking-row b{color:var(--gold)}
 .booking-row .meta{color:var(--muted);font-size:.88em;margin-top:4px}
 @media(max-width:640px){.hero h1{font-size:1.4em}.topnav a{display:none}}
+
+.modal[hidden]{display:none!important}
